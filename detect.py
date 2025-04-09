@@ -1,9 +1,7 @@
 import cv2
 from ultralytics import YOLO
 
-# yolo11x là  một model AI  có thể giúp mình xử lý hình ảnh
-# Ứng dụng: giao thông, xe tự hành
-model = YOLO("yolo11x.pt")
+model = YOLO("yolo11x.pt") # basically an AI model that helps humans to identify pictures
 
 def predict(chosen_model, img, classes=[], conf=0.5):
     if classes:
@@ -23,8 +21,12 @@ def predict_and_detect(chosen_model, img, classes=[], conf=0.5, rectangle_thickn
                         cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 0), text_thickness)
     return img, results
 
-image = cv2.imread("traffic_in_Vietnam.jpg")  # edit line  again
-result_img, _ = predict_and_detect(model, image, classes=[2,3], conf=0.1)  # detect other object by edit numberclass
+image = cv2.imread("traffic_in_Vietnam.jpg") #change the picture you want to try
+result_img, _ = predict_and_detect(model, image, classes=[2,3], conf=0.1) #change classes according to what you want the AI to identifu
+
+"""
+the setting above is only for the traffic_in_Vietnam.jpg and will not work on other photos so you'll have to change the specs
+"""
 
 cv2.imshow("Image", result_img)
 cv2.imwrite("Result.png", result_img)
