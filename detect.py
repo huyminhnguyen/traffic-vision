@@ -22,10 +22,10 @@ def predict_and_detect(chosen_model, img, classes=[], conf=0.5, rectangle_thickn
     return img, results
 
 image = cv2.imread("traffic_in_Vietnam.jpg") #change the picture you want to try
-result_img, _ = predict_and_detect(model, image, classes=[2,3], conf=0.1) #change classes according to what you want the AI to identifu
+result_img, _ = predict_and_detect(model, image, classes=[2,3], conf=0.1) #change classes according to what you want the AI to identify
 
 """
-the setting above is only for the traffic_in_Vietnam.jpg and will not work on other photos so you'll have to change the specs
+the setting above is only for cars and motorcycles at 0.1 range so you'll have to change the specs above according to your specifications
 """
 
 cv2.imshow("Image", result_img)
