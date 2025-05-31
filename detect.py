@@ -3,14 +3,14 @@ from ultralytics import YOLO
 
 model = YOLO("yolo11x.pt") # basically an AI model that helps humans to identify pictures
 
-def predict(chosen_model, img, classes=[], conf=0.5):
+def predict(chosen_model, img, classes=[], conf=0.5):   # gets coordinate of the object/s only
     if classes:
         results = chosen_model.predict(img, classes=classes, conf=conf)
     else:
         results = chosen_model.predict(img, conf=conf)
     return results
 
-def predict_and_detect(chosen_model, img, classes=[], conf=0.5, rectangle_thickness=2, text_thickness=1):
+def predict_and_detect(chosen_model, img, classes=[], conf=0.5, rectangle_thickness=2, text_thickness=1): # draws on image
     results = predict(chosen_model, img, classes, conf=conf)
     for result in results:
         for box in result.boxes:
